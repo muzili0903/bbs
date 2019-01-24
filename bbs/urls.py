@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url
 
 from post import views as post_views
+from user import views as user_views
 
 urlpatterns = [
     url(r'^', post_views.list_post), # 把这个页面当首页
@@ -25,4 +26,9 @@ urlpatterns = [
     url(r'^post/delete/', post_views.delete_post),
     url(r'^post/list/', post_views.list_post),
     url(r'^post/search/', post_views.search_post),
+
+    url(r'^user/register/', user_views.register),
+    url(r'^user/login/', user_views.login),
+    url(r'^user/logout/', user_views.logout),
+    url(r'^user/info/', user_views.user_info),
 ]
