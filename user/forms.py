@@ -5,6 +5,7 @@
 @Author  : muzili
 @File    : forms
 '''
+# forms用于验证提交的字段
 from django import forms
 
 from user.models import User
