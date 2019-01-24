@@ -25,8 +25,8 @@ def register(request):
             request.session['avatar'] = user.icon.url
             return redirect('/user/info/')
         else:
-            return render(request, '', {'error': form.errors})
-    return render(request, '', {})
+            return render(request, 'register.html', {'error': form.errors})
+    return render(request, 'register.html')
 
 
 def login(request):
@@ -45,7 +45,7 @@ def login(request):
             return redirect('/user/info/')
         else:
             return render(request, 'login.html', {'error': '用户名或密码错误'})
-    return render(request, '', {})
+    return render(request, 'login.html')
 
 
 def logout(request):
@@ -57,4 +57,4 @@ def logout(request):
 def user_info(request):
     uid = request.session.get('uid')
     user = User.objects.get(pk=uid)
-    return render(request, '', {'user': user})
+    return render(request, 'user_info.html', {'user': user})
