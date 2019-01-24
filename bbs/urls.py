@@ -18,6 +18,7 @@ from django.conf.urls import url
 from post import views as post_views
 
 urlpatterns = [
+    url(r'^', post_views.list_post), # 把这个页面当首页
     url(r'^post/create/', post_views.create_post),
     url(r'^post/edit/', post_views.edit_post),
     url(r'^post/read/', post_views.read_post),
