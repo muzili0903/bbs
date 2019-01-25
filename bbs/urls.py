@@ -14,11 +14,23 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
-from django.contrib import admin
 
-from post.views import test
+from post import views as post_views
+from user import views as user_views
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^post/', test),
+    url(r'^', post_views.list_post), # 把这个页面当首页
+    url(r'^post/create/', post_views.create_post),
+    url(r'^post/edit/', post_views.edit_post),
+    url(r'^post/read/', post_views.read_post),
+    url(r'^post/delete/', post_views.delete_post),
+    url(r'^post/list/', post_views.list_post),
+    url(r'^post/search/', post_views.search_post),
+
+    url(r'^user/register/', user_views.register),
+    url(r'^user/login/', user_views.login),
+    url(r'^user/logout/', user_views.logout),
+    url(r'^user/info/', user_views.user_info),
+
+    url(r'^weibo/callback/', user_views.wb_callback),
 ]
