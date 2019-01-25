@@ -13,7 +13,7 @@ def create_post(request):
         post = Post.objects.create(title=title, content=content)
         return redirect('/post/read/?post_id=%s' % post.id)
     else:
-        return render(request, '', {})
+        return render(request, 'create_post.html')
 
 
 def edit_post(request):
@@ -27,13 +27,13 @@ def edit_post(request):
     else:
         post_id = request.GET.get('post_id')
         post = Post.objects.get(pk=post_id)
-        return render(request, '', {'post': post})
+        return render(request, 'edit_post.html', {'post': post})
 
 
 def read_post(request):
     post_id = request.GET.get('post_id')
     post = Post.objects.get(pk=post_id)
-    return render(request, '', {'post': post})
+    return render(request, 'read_post.html', {'post': post})
 
 
 def delete_post(request):
@@ -53,7 +53,7 @@ def list_post(request):
     # 执行all的时候不会把所有的对象取出来，all是赖加载,如果all后面没有条件，就会把所有的对象加载起来
     posts = Post.objects.all().order_by('-id')[start:end]
     # select * from post where offset start limit per_page
-    return render(request, '', {'posts': posts, 'pages': range(pages)})
+    return render(request, 'post_list.html', {'posts': posts, 'pages': range(pages)})
 
 
 def search_post(request):
